@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html>
+	<html>
 	<head>
 		<title>Project 1: Rasterizer</title>
 	</head>
 	<body>
-	<h1>Project Overview</h1>
+		<h1>Project Overview</h1>
 		<p>Lorem ipsum</p>
 		<p>Burns</p>
-	<h1>Task 1:Rasterize Triangle</h1>
-		<img src="./images/test4_task1.png" title="test4.svg after completing Task 1">
+		<h1>Task 1:Rasterize Triangle</h1>
+		<table class="image">
+			<caption align="bottom">Figure 1: <code>test4.svg</code> after completingTask 1</caption>
+			<tr><td><img src="./images/test4_task1.png" title="test4.svg after completing Task 1"></td></tr>
+		</table>
+		<p>
+			Points are given into the function <code>RasterizerImp::rasterize_triangle()</code> function in the file <code>rasterizer.cpp</code>.
+			The function takes in a <code>color</code>value and three points representing a triangle in Cartesian space.
+			Determining if a point is inside a triangle is governed by the half-plane equations dictated below:
+		</p>
+		<p align="center"><img align="center" src="https://i.upmath.me/svg/P_i%3D(X_i%2C%20Y_i)" alt="P_i=(X_i, Y_i)" /></p>
+		<p align="center"><img align="center" src="https://i.upmath.me/svg/dX_i%20%3D%20X_%7Bi%2B1%7D%20-%20X_i" alt="dX_i = X_{i+1} - X_i" /></p>
+		<p align="center"><img align="center" src="https://i.upmath.me/svg/dY_i%20%3D%20Y_%7Bi_1%7D%20-%20Y_i" alt="dY_i = Y_{i_1} - Y_i" /></p>
+		<p align="center"><img align="center" src="https://i.upmath.me/svg/L_i(x%2Cy)%3D-(x-X_i)dY_i%20%2B%20(y-Y_i)dX_i%20" alt="L_i(x,y)=-(x-X_i)dY_i + (y-Y_i)dX_i " /></p>
+		<p>
+			Correctly rasterizing the triangles requires that all normal vectors of the half-planes face inward.
+			In other words, the points fed into the <code>rasterize_triangle()</code> function
+			must be given in a counter-clockwise fashion. If the points are given in a clockwise order, 
+			two of the points are simply swapped using <code>swap()</code> and the half-planes of the triange are recomputed. 
+			Points that fall within a triangle are given the same color, and the borders of the polygons are
+			filled in with <code>fill_pixel()</code>. The successful implementation of this function is seen in Figure 1.
+		</p>
+		<p>
+			In terms of speed, the algorithm for <code>rasterize_triangle()</code>
+			evaluates points within a bounding box around the triangle of interest.
+			To perform this task, the algorithm determines the highest and lowest
+			values in Cartesian space and rounds up and down respectively. 
+		</p>
 	</body>
-</!DOCTYPEhtml>
+	</!DOCTYPEhtml>
