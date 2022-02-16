@@ -1,48 +1,71 @@
 <!DOCTYPE html>
-	<html>
-	<head>
-		<title>Project 1: Rasterizer</title>
-	</head>
-	<body>
-		<h1>Project Overview</h1>
-		<p>This project focused on triangle rasterization, transforms, barycentric coordinates, and texture mapping. </p>
-		<h1>Task 1: Drawing Single-Color Triangles</h1>
-		<table class="image">
-			<caption align="bottom">Figure 1: <code>test4.svg</code> after completing Task 1</caption>
-			<tr><td><img src="./images/test4_task1.png" title="test4.svg after completing Task 1"></td></tr>
-		</table>
-		<p>
-			Points are given into the function <code>RasterizerImp::rasterize_triangle()</code> function in the file <code>rasterizer.cpp</code>.
-			The function takes in a <code>color</code>value and three points representing a triangle in Cartesian space.
-			Determining if a point is inside a triangle is governed by the half-plane equations dictated below:
-		</p>
-		<p align="center"><img align="center" src="https://i.upmath.me/svg/P_i%3D(X_i%2C%20Y_i)" alt="P_i=(X_i, Y_i)" /></p>
-		<p align="center"><img align="center" src="https://i.upmath.me/svg/dX_i%20%3D%20X_%7Bi%2B1%7D%20-%20X_i" alt="dX_i = X_{i+1} - X_i" /></p>
-		<p align="center"><img align="center" src="https://i.upmath.me/svg/dY_i%20%3D%20Y_%7Bi_1%7D%20-%20Y_i" alt="dY_i = Y_{i_1} - Y_i" /></p>
-		<p align="center"><img align="center" src="https://i.upmath.me/svg/L_i(x%2Cy)%3D-(x-X_i)dY_i%20%2B%20(y-Y_i)dX_i%20" alt="L_i(x,y)=-(x-X_i)dY_i + (y-Y_i)dX_i " /></p>
-		<p>
-			Correctly rasterizing the triangles requires that all normal vectors of the half-planes face inward.
-			In other words, the points fed into the <code>rasterize_triangle()</code> function
-			must be given in a counter-clockwise fashion. If the points are given in a clockwise order,
-			two of the points were simply swapped using <code>swap()</code> and the half-planes of the triangle were recomputed.
-			Points that fall within a triangle are given the same color, and the borders of the polygons are
-			filled in with <code>fill_pixel()</code>. The successful implementation of this function is seen in Figure 1.
-		</p>
-		<p>
-			In terms of speed, the algorithm for <code>rasterize_triangle()</code>
-			evaluates points within a bounding box around the triangle of interest.
-			To perform this task, the algorithm determines the highest and lowest
-			values in Cartesian space and rounds up and down respectively.
-		</p>
-		<h1>Task 2: Antialiasing by Supersampling</h1>
+<html>
+<head>
+    <title>Project 1: Rasterizer</title>
+</head>
+<body>
+    <h1>Project Overview</h1>
+    <p>This project focused on triangle rasterization, transforms, barycentric coordinates, and texture mapping. </p>
+    <h1>Task 1: Drawing Single-Color Triangles</h1>
+    <table class="image">
+        <caption align="bottom">Figure 1: <code>test4.svg</code> after completing Task 1</caption>
+        <tr><td><img src="./images/test4_task1.png" title="test4.svg after completing Task 1"></td></tr>
+    </table>
+    <p>
+        Points are given into the function <code>RasterizerImp::rasterize_triangle()</code> function in the file <code>rasterizer.cpp</code>.
+        The function takes in a <code>color</code>value and three points representing a triangle in Cartesian space.
+        Determining if a point is inside a triangle is governed by the half-plane equations dictated below:
+    </p>
+    <p align="center"><img align="center" src="https://i.upmath.me/svg/P_i%3D(X_i%2C%20Y_i)" alt="P_i=(X_i, Y_i)" /></p>
+    <p align="center"><img align="center" src="https://i.upmath.me/svg/dX_i%20%3D%20X_%7Bi%2B1%7D%20-%20X_i" alt="dX_i = X_{i+1} - X_i" /></p>
+    <p align="center"><img align="center" src="https://i.upmath.me/svg/dY_i%20%3D%20Y_%7Bi_1%7D%20-%20Y_i" alt="dY_i = Y_{i_1} - Y_i" /></p>
+    <p align="center"><img align="center" src="https://i.upmath.me/svg/L_i(x%2Cy)%3D-(x-X_i)dY_i%20%2B%20(y-Y_i)dX_i%20" alt="L_i(x,y)=-(x-X_i)dY_i + (y-Y_i)dX_i " /></p>
+    <p>
+        Correctly rasterizing the triangles requires that all normal vectors of the half-planes face inward.
+        In other words, the points fed into the <code>rasterize_triangle()</code> function
+        must be given in a counter-clockwise fashion. If the points are given in a clockwise order,
+        two of the points were simply swapped using <code>swap()</code> and the half-planes of the triangle were recomputed.
+        Points that fall within a triangle are given the same color, and the borders of the polygons are
+        filled in with <code>fill_pixel()</code>. The successful implementation of this function is seen in Figure 1.
+    </p>
+    <p>
+        In terms of speed, the algorithm for <code>rasterize_triangle()</code>
+        evaluates points within an axis-aligned bounding box around the triangle of interest.
+        To perform this task, the algorithm determines the highest and lowest
+        values in Cartesian space and rounds up and down respectively.
+    </p>
+    <h1>Task 2: Antialiasing by Supersampling</h1>
+    <p>
+        By nomenclature, supersampling is a means for anti-aliasing by increasing
+        the sampling rate of the rasterization process. To achieve this, supersampling
+        divides pixels into additional subpixels and performs the same triangle test as
+        seen in Task 1.
+    </p>
+    <p>
+        Inside <code>rasterizer.cpp</code>, I updated the existing starter code to support supersampling.
+        The number of subpixels per pixel was dependent on the sampling rate, therefore pixels were
+        divided into a grid <code>sqrt(sample_rate)</code> by <code>sqrt(sample_rate)</code>. For memory management,
+        the <code>vector&ltColor&gt</code> <code>sample_buffer</code>, which stores all color samples for pixels in the frame buffer,
+        received a pointer such that modification of the vector by way of dereferencing did not take up more storage. Supersampling took place in <code>resolve_to_framebuffer()</code>
+        and the updated <code>rasterize_triangle()</code> functions. More specifically, the triangle test in <code>rasterize_triangle</code>
+        function evaluated subpixels with the inside triangle test from Task 1 and identified the fraction of those that fell within the
+        triangle's perimeter. This fraction was then applied to the Red Green Blue (RGB) values stored in the <code>sample_buffer</code>.
+        The function <code>resolve_to_framebuffer</code> translated the <code>Color</code> values stored in <code>sample_buffer</code> to the actual
+        RGB values shown on the frame buffer with the <code>rgb_framebuffer_target</code> data structure. With pixels having a more
+        varied signal as a result of having a fraction of their original RGB values from regular sampling, there is fewer aliasing.
+    </p>
+    <h1>Task 3: Transforms</h1>
 
-		<h1>Task 3: Transforms</h1>
+    <h1>Task 4: Barycentric Coordinates</h1>
+    <p>
+        Barycentric coordinates establish a coordinate system and geometric center within a triangle, allowing for the interpolation
+        of values within the triangle. This offers a simpler expression of positions in the triangle realtive to the triangle 
+        itself, as opposed to identifying points within a fixed Cartesian basis of the whole framebuffer, per se. Establishing
+        the barycentric coordinates allows for interpolation of values such as colors or textures. 
+    </p>
+    <h1>Task 5: "Pixel Sampling" for Texture Mapping</h1>
 
-		<h1>Task 4: Barycentric Coordinates</h1>
-
-		<h1>Task 5: "Pixel Sampling" for Texture Mapping</h1>
-
-		<h1>Task 6: "Level Sampling" with mipmaps for texture mapping</h1>
-	</body>
-	<a href="url">https://htmlpreview.github.io/?https://github.com/cal-cs184-student/sp22-project-webpages-AlbertScribblenaut/blob/aa758677b3d4a7a7cd4ba9e55dfb3411b0f606d6/proj1/index.html</a>
-	</html>
+    <h1>Task 6: "Level Sampling" with mipmaps for texture mapping</h1>
+</body>
+<a href="url">https://github.com/cal-cs184-student/sp22-project-webpages-AlbertScribblenaut/blob/master/proj1/index.html</a>
+</html>
