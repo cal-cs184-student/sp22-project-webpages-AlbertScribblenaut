@@ -1,4 +1,4 @@
-% CS184 Project 3-1: Pathtracer
+CS184 Project 3-1: Pathtracer
 ==============
 
 ***Due: March 15, 2022***
