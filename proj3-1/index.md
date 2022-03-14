@@ -4,6 +4,7 @@ CS184 Project 3-1: Pathtracer
 ***Due: March 15, 2022***
 
 **Author:** *Albert Wen*
+
 Lol starting late lol life is a mess lol smh
 
 ![Monkey's Hot Dog](images/FNv4vIYVIAANuY_.jpg)
