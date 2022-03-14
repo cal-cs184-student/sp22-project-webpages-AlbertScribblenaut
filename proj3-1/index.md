@@ -1,4 +1,4 @@
-# CS184 Project 3-1: Pathtracer
+% CS184 Project 3-1: Pathtracer
 Lol starting late lol life is a mess lol smh
 
 ![Monkey's Hot Dog](images/FNv4vIYVIAANuY_.jpg)
