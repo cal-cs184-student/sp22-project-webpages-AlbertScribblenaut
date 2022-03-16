@@ -15,6 +15,9 @@ Lol starting late lol life is a mess lol smh
 * Explain the triangle intersection algorithm you implemented in your own words.
 * Show images with normal shading for a few small .dae files.
 
+![CBempty.dae after task 2](images/part1/task2/CBempty.png)
+![banana.dae after task 2](images/part1/task2/banana.png)
+
 # Part 2: Bounding Volume Hierarchy
 * Walk through your BVH construction algorithm. Explain the heuristic you chose for picking the splitting point.
 * Show images with normal shading for a few large .dae files that you can only render with BVH acceleration.
