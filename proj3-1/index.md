@@ -11,10 +11,11 @@ Lol starting late lol life is a mess lol smh
 
 * Walk through the ray generation and primitive intersection parts of the rendering pipeline.
 * Explain the triangle intersection algorithm you implemented in your own words.
-* Show images with normal shading for a few small .dae files.
 
 ![CBempty.dae after task 2](images/part1/task2/CBempty.png)
 ![banana.dae after task 2](images/part1/task2/banana.png)
+![CBempty.dae after task 3](images/part1/task3/CBempty.png)
+![CBspheres_lambertian.dae after task 4](images/part1/task4/CBspheres.png)
 
 # Part 2: Bounding Volume Hierarchy
 * Walk through your BVH construction algorithm. Explain the heuristic you chose for picking the splitting point.
@@ -41,4 +42,4 @@ You will probably want to use the instructional machines for the above renders i
 
 
 # Web Page
-[It's on GitHub](https://github.com/cal-cs184-student/sp22-project-webpages-AlbertScribblenaut/blob/master/proj3-1/index.md)
+[Written in Markdown, hosted on GitHub](https://github.com/cal-cs184-student/sp22-project-webpages-AlbertScribblenaut/blob/master/proj3-1/index.md)
