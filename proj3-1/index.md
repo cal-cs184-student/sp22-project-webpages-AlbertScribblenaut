@@ -21,7 +21,7 @@ The correct implementation of `camera.cpp` results in the images below.
 
 Next came the raytracing of primitives in 3D space. Two primitives were used for this implementation: triangles and spheres. Determining the point of intersection between a triangle and ray emitted from the camera required implementing the Moller Trumbore algorithm, which establishes a linear system of equations for generating barycentric coordinates of a point in a triangle and the time of intersection from the ray's origin. The solutions to this system of equations determine the time of intersection of the ray with the plane in which the triangle lies and if the intersection lies within the triangle itself. The time of intersection, point of intersection, normal unit vector of the point of intersection, and the triangle's BSDF are then stored in an `Intersection` object for rendering. One critical check that was performed was to see if the time of intersection fell between the `ray` object's `min_t` and `max_t` in order to be valid, as the `ray` is not intended to continue infinitely.
 
-> `bool Triangle::intersect(const Ray &r, Intersection *isect) const {
+> bool Triangle::intersect(const Ray &r, Intersection *isect) const {
   // Part 1, Task 3:
   // implement ray-triangle intersection. When an intersection takes
   // place, the Intersection data should be updated accordingly
@@ -30,8 +30,7 @@ Next came the raytracing of primitives in 3D space. Two primitives were used for
 	Vector3D S = r.o - p1;
 	Vector3D S1 = cross(r.d, E2);
 	Vector3D S2 = cross(S, E1);
-
-	>float t = dot(S2, E2) / dot(S1, E1);
+	float t = dot(S2, E2) / dot(S1, E1);
 	if (has_intersection(r)) {
 		isect->t = t;
 		Vector3D intPt = r.at_time(t);
@@ -42,7 +41,7 @@ Next came the raytracing of primitives in 3D space. Two primitives were used for
 		isect->primitive = this;
 		isect->bsdf = get_bsdf();
 	}
-	return has_intersection(r);`
+	return has_intersection(r);
 * Code snippet from `Triangle::intersect` in `triangle.cpp`
 
 ![CBempty.dae after task 3](images/part1/task3/CBempty.png)
