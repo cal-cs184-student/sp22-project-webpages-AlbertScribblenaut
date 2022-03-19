@@ -13,7 +13,9 @@ Ray generation and primitive intersection implementation involved writing code i
 * Perform a mapping between the point of ray intersection on the plane of an image sensor to the camera coordinates then world coordinates.
 * Generate a `ray` object with the `Vector3D` positions of the camera's `pos` and ray intersection on the plane of the original image.
 The correct implementation of `camera.cpp` results in the images below.
+
 ![CBempty.dae after task 2](images/part1/task2/CBempty.png)
+
 ![banana.dae after task 2](images/part1/task2/banana.png)
 
 Next came the raytracing of primitives in 3D space. Two primitives were used for this implementation: triangles and spheres. Determining the point of intersection between a triangle and ray emitted from the camera required implementing the Möller Trumbore algorithm, which establishes a linear system of equations for generating barycentric coordinates of a point in a triangle and the time of intersection from the ray's origin. The solutions to this system of equations determine the time of intersection of the ray with the plane in which the triangle lies and if the intersection lies within the triangle itself. The time of intersection, point of intersection, normal unit vector of the point of intersection, and the triangle's bidirectional scattering function (BSDF) are then stored in an `Intersection` object for rendering. One critical check that was performed was to see if the time of intersection fell between the `ray` object's `min_t` and `max_t` in order to be valid, as the `ray` is not intended to continue infinitely.
