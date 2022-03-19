@@ -46,7 +46,7 @@ bool Triangle::intersect(const Ray &r, Intersection *isect) const {
 ![CBspheres_lambertian.dae after task 4](images/part1/task4/CBspheres.png)
 
 # Part 2: Bounding Volume Hierarchy
-Bounding Volume Hierarchy (BVH) is a binary tree of bounding boxes to divide the space among the primitives within a scene. I was not able to get this part working because I have not figured out how to divide the space along the longest axis created by the primitives' respective centroids.
+Bounding Volume Hierarchy (BVH) is a binary tree of bounding boxes to divide the space among the primitives within a scene. I was not able to get this part working because I have not figured out how to divide the space along the longest axis created by the primitives' respective centroids. This prevented me from successfully implementing this part and the remaining parts of this project.
 
 # Part 3: Direct Illumination
 
