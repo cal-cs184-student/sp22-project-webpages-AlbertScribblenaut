@@ -26,7 +26,7 @@ CS184 Project 3-2: Pathtracer
 * Explain how these bounce numbers relate to the particular effects that appear.
 
 # Part 4
-![CBdragon.dae with aperture 1.23, depth 4.56](images/part4/CBdragon-b1.23-d5.46.png)
+![CBdragon.dae with aperture 1.23, depth 4.56](images/part4/CBdragon/CBdragon-b1.23-d4.56.png)
 
 ## Focus stack with aperture change, depth at 4.56
 ![CBdragon.dae with aperture 0](images/part4/CBdragon/aperture_change/CBdragon-b0-d4.56.png)
