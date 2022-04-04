@@ -9,7 +9,8 @@ CS184 Project 3-2: Pathtracer
 * Show a sequence of six images of scene CBspheres.dae rendered with max_ray_depth set to 0, 1, 2, 3, 4, 5, and 100. The other settings should be at least 64 samples per pixel and 4 samples per light.
 
 ![CBspheres.dae with ray depth 0](images/part1/CBspheres-m0.png)
-*CBspheres.dae with ray depth = 0*
+
+Figure 1: *CBspheres.dae with ray depth = 0*
 
 ![CBspheres.dae with ray depth 1](images/part1/CBspheres-m1.png)
 
