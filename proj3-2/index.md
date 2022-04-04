@@ -8,7 +8,11 @@ CS184 Project 3-2: Pathtracer
 # Part 1
 * Show a sequence of six images of scene CBspheres.dae rendered with max_ray_depth set to 0, 1, 2, 3, 4, 5, and 100. The other settings should be at least 64 samples per pixel and 4 samples per light.
 
-![CBspheres.dae with ray depth 0](images/part1/CBspheres-m0.png)
+| ![CBspheres.dae with ray depth 0](images/part1/CBspheres-m0.png) |
+
+|:--:|
+
+| <b>CBspheres.dae with ray depth = 0</b>|
 
 ![CBspheres.dae with ray depth 1](images/part1/CBspheres-m1.png)
 
@@ -26,16 +30,19 @@ CS184 Project 3-2: Pathtracer
 * Explain how these bounce numbers relate to the particular effects that appear.
 
 # Part 4
+* In a few sentences, explain the differences between a pinhole camera model and a thin-lens camera model.
+
 ![CBdragon.dae with aperture 1.23, depth 4.56](images/part4/CBdragon/CBdragon-b1.23-d4.56.png)
+*
 
 ## Focus stack with aperture change, depth at 4.56
-![CBdragon.dae with aperture 0](images/part4/CBdragon/aperture_change/CBdragon-b0-d4.56.png)
+![CBdragon.dae with aperture 0.25](images/part4/CBdragon/aperture_change/CBdragon-b0.25-d4.56.png)
 
-![CBdragon.dae with aperture 0.02](images/part4/CBdragon/aperture_change/CBdragon-b0.02-d4.56.png)
+![CBdragon.dae with aperture 0.5](images/part4/CBdragon/aperture_change/CBdragon-b0.5-d4.56.png)
 
-![CBdragon.dae with aperture 1.02](images/part4/CBdragon/aperture_change/CBdragon-b1.02-d4.56.png)
+![CBdragon.dae with aperture 0.75](images/part4/CBdragon/aperture_change/CBdragon-b0.75-d4.56.png)
 
-![CBdragon.dae with aperture 1.15](images/part4/CBdragon/aperture_change/CBdragon-b1.15-d4.56.png)
+![CBdragon.dae with aperture 1](images/part4/CBdragon/aperture_change/CBdragon-b1-d4.56.png)
 
 ## Focus stack with depth change, aperture at 1.23
 
@@ -47,9 +54,6 @@ CS184 Project 3-2: Pathtracer
 
 ![CBdragon.dae with depth 4](images/part4/CBdragon/depth_change/CBdragon-b1.23-d4.png)
 
-* In a few sentences, explain the differences between a pinhole camera model and a thin-lens camera model.
-* Show a "focus stack" where you focus at 4 visibly different depths through a scene.
-* Show a sequence of 4 pictures with visibly different aperture sizes, all focused at the same point in a scene.
 
 
 
