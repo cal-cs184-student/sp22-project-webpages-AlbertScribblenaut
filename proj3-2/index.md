@@ -21,6 +21,7 @@ CS184 Project 3-2: Pathtracer
 ![CBspheres.dae with ray depth 5](images/part1/CBspheres-m5.png)
 
 ![CBspheres.dae with ray depth 100](images/part1/CBspheres-m100.png)
+
 * Point out the new multibounce effects that appear in each image.
 * Explain how these bounce numbers relate to the particular effects that appear.
 
@@ -38,13 +39,13 @@ CS184 Project 3-2: Pathtracer
 
 ## Focus stack with depth change, aperture at 1.23
 
-![CBdragon.dae with depth 1](images/part4/CBdragon/depth_charge/CBdragon-b1.23-d1.png)
+![CBdragon.dae with depth 1](images/part4/CBdragon/depth_change/CBdragon-b1.23-d1.png)
 
-![CBdragon.dae with depth 2](images/part4/CBdragon/depth_charge/CBdragon-b1.23-d2.png)
+![CBdragon.dae with depth 2](images/part4/CBdragon/depth_change/CBdragon-b1.23-d2.png)
 
-![CBdragon.dae with depth 3.75](images/part4/CBdragon/depth_charge/CBdragon-b1.23-d3.75.png)
+![CBdragon.dae with depth 3.75](images/part4/CBdragon/depth_change/CBdragon-b1.23-d3.75.png)
 
-![CBdragon.dae with depth 4](images/part4/CBdragon/depth_charge/CBdragon-b1.23-d4.png)
+![CBdragon.dae with depth 4](images/part4/CBdragon/depth_change/CBdragon-b1.23-d4.png)
 
 * In a few sentences, explain the differences between a pinhole camera model and a thin-lens camera model.
 * Show a "focus stack" where you focus at 4 visibly different depths through a scene.
