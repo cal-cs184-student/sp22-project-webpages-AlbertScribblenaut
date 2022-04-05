@@ -109,7 +109,7 @@ This image is also the first where the ceiling panel's color is now visible to t
 
 Figure 4: *CBspheres.dae with ray depth 3*
 
-As seen in Figure 4, the right sphere now refracts light because rays that undergo refraction can enter and exit the sphere's material. Compared to the previous figure, most of the reflections shown in the right sphere are no longer visible due to the refracting light. The right sphere does have a reflected image of the left sphere, but it is not obvious. Three-bounce rays that refract through the right sphere undergo either of the following sequence before terminating at the camera's sensor:
+As seen in Figure 4, the right sphere now refracts light because rays that undergo refraction can enter and exit the sphere's material. Compared to the previous figure, most of the reflections shown in the right sphere are no longer visible due to the refracting light. The right sphere does have a reflected image of the left sphere, but it is not obvious. The blue color of the right wall is refracted, resulting in the blue color showing on the left face of the right sphere. Three-bounce rays that refract through the right sphere undergo either of the following sequence before terminating at the camera's sensor:
 
 **Sequence 1**
 
@@ -127,7 +127,7 @@ As seen in Figure 4, the right sphere now refracts light because rays that under
 
 Following the second sequence of bounces contributes to the highlight on the floor directly beneath the right sphere.
 
-The left sphere's reflection of the right sphere's image appears black because there were not enough bounces available for it to properly display the right sphere's image. This time, the ceiling panel's reflection is accurately captured.
+The left sphere's reflection of the right sphere's image appears black because there were not enough bounces available for it to properly display the right sphere's image. This time, the ceiling panel's reflection in the left sphere is white instead of black.
 
 ## Ray depth 4
 ![CBspheres.dae with ray depth 4](images/part1/CBspheres-m4.png)
