@@ -37,13 +37,15 @@ This image is also the first where the ceiling panel's color is now visible to t
 Figure 4: *CBspheres.dae with ray depth 3*
 
 As seen in Figure 4, the right sphere now refracts light because rays that undergo refraction can enter and exit the sphere's material. Compared to the previous figure, the reflections shown in the right sphere are no longer visible due to the refracting light. Three-bounce rays that refract through the right sphere undergo either of the following sequence before terminating at the camera's sensor:
+
+**Sequence 1**
+
 1. Zeroth bounce: exiting from the ceiling light for direct illumination
 2. First bounce: reflecting off the box space or the left sphere's surface
 3. Second bounce: refracting upon entry, from air to the right sphere's glass
 4. Third bounce: refracting upon exit, from glass to air
 
-
-
+**Sequence 2**
 
 1. Zeroth bounce: exiting from the ceiling light for direct illumination
 2. First bounce: refracting upon entry, from air to the right sphere's glass
