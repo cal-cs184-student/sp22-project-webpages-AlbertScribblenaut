@@ -43,6 +43,8 @@ As seen in Figure 4, the right sphere now refracts light because rays that under
 4. Third bounce: refracting upon exit, from glass to air
 
 
+
+
 1. Zeroth bounce: exiting from the ceiling light for direct illumination
 2. First bounce: refracting upon entry, from air to the right sphere's glass
 3. Second bounce: refracting upon exit, from glass to air
