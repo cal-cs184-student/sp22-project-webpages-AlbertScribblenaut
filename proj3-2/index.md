@@ -197,3 +197,4 @@ Because the depth is greater than shown in previous figures, the midsection of t
 
 # Web Page
 [Written in Markdown, hosted on GitHub](https://github.com/cal-cs184-student/sp22-project-webpages-AlbertScribblenaut/edit/master/proj3-2/index.md)
+https://github.com/cal-cs184-student/sp22-project-webpages-AlbertScribblenaut/edit/master/proj3-2/index.md
