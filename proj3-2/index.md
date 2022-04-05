@@ -168,7 +168,7 @@ As shown in Figure 8, the rendered dragon appears to have only the chest and mou
 * Uniformly sample a point on the thin lens with `Vector3D pLens = (lensRadius * sqrt(rndR) * cos(rndTheta), lensRadius * sqrt(rndR) * sin(rndTheta), 0)`, where `rndR` and `rndTheta` are random variables `0 <= rndR < 1` and `0 <= rndTheta < 2 * PI`.
 * Determine the direction `Vector3D blueDir` of the ray from `pLens` to `pFocus`
 * Normalize `blueDir`
-* Perform a transform from camera space to world space for `blueDir` and `pLens` with the `Matrix 3x3 c2w` matrix
+* Perform a transform from camera space to world space for `blueDir` and `pLens` with the `Matrix3x3 c2w` matrix
 * adjust the position of `pLens` with `pos`, which denotes the lens' center within world space
 * construct the `Ray blueRay` object with the adjusted `pLens` as the origin and `blueDir` as the direction and set the near and far clips of the `Ray`
 * return `blueRay`
