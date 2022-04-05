@@ -7,6 +7,7 @@ CS184 Project 3-2: Pathtracer
 
 # Part 1
 
+## Ray depth 0
 ![CBspheres.dae with ray depth 0](images/part1/CBspheres-m0.png)
 
 Figure 1: *CBspheres.dae with ray depth 0*
@@ -15,10 +16,12 @@ In Figure 1, when ray depth is 0, neither of the spheres is visible. As a result
 
 ![CBspheres.dae with ray depth 1](images/part1/CBspheres-m1.png)
 
+## Ray depth 1
 Figure 2: *CBspheres.dae with ray depth 1*
 
 In Figure 2, the box surrounding the spheres and their outlines are visible. Both spheres exhibit a white highlight because they reflect the direct illumination from the ceiling only. With only one bounce, the rays cannot allow the material to reflect the colors of the adjacent walls of the box. Shadows are accurately depicted due to the `at_least_one_bounce_radiance` function.
 
+## Ray depth 2
 ![CBspheres.dae with ray depth 2](images/part1/CBspheres-m2.png)
 
 Figure 3: *CBspheres.dae with ray depth 2*
@@ -32,6 +35,7 @@ In the right sphere, there is some reflection exhibited, but it is not a purely 
 
 This image is also the first where the ceiling panel's color is now visible to the camera, but not visible in the left sphere's reflection of the environment.
 
+## Ray depth 3
 ![CBspheres.dae with ray depth 3](images/part1/CBspheres-m3.png)
 
 Figure 4: *CBspheres.dae with ray depth 3*
@@ -56,6 +60,7 @@ Following the second sequence of bounces contributes to the highlight on the flo
 
 The left sphere's reflection of the right sphere's image appears black because there were not enough bounces available for it to properly display the right sphere's image. This time, the ceiling panel's reflection is accurately captured.
 
+## Ray depth 4
 ![CBspheres.dae with ray depth 4](images/part1/CBspheres-m4.png)
 
 Figure 5: *CBspheres.dae with ray depth 4*
@@ -64,6 +69,7 @@ With an additional bounce, Figure 5 also displays additional refraction from the
 
 The ceiling panel reflected in the left sphere is brighter than before.
 
+## Ray depth 5
 ![CBspheres.dae with ray depth 5](images/part1/CBspheres-m5.png)
 
 Figure 6: *CBspheres.dae with ray depth 5*
@@ -72,6 +78,7 @@ The highlight in the lower right is larger than before due to more contributing 
 
 The ceiling panel reflected in the left sphere is brighter than before too.
 
+## Ray depth 100
 ![CBspheres.dae with ray depth 100](images/part1/CBspheres-m100.png)
 
 Figure 7: *CBspheres.dae with ray depth 100*
