@@ -14,9 +14,9 @@ Figure 1: *CBspheres.dae with ray depth 0*
 
 In Figure 1, when ray depth is 0, neither of the spheres is visible. As a result of direct illumination, only the light from the ceiling is visible to the camera. The zeroth bounce from the ceiling makes it visible to the camera, but the ceiling is completely dark.
 
+## Ray depth 1
 ![CBspheres.dae with ray depth 1](images/part1/CBspheres-m1.png)
 
-## Ray depth 1
 Figure 2: *CBspheres.dae with ray depth 1*
 
 In Figure 2, the box surrounding the spheres and their outlines are visible. Both spheres exhibit a white highlight because they reflect the direct illumination from the ceiling only. With only one bounce, the rays cannot allow the material to reflect the colors of the adjacent walls of the box. Shadows are accurately depicted due to the `at_least_one_bounce_radiance` function.
@@ -99,17 +99,17 @@ Figure 8: *CBdragon.dae with aperture 1.23, depth 4.56*
 
 Figure 9: *CBdragon.dae with aperture 0.25, depth 4.56*
 
-![CBdragon.dae with aperture 0.5](images/part4/CBdragon/aperture_change/CBdragon-b0.5-d4.56.png)
-
-Figure 10: *CBdragon.dae with aperture 0.5, depth 4.56*
-
 ![CBdragon.dae with aperture 0.75](images/part4/CBdragon/aperture_change/CBdragon-b0.75-d4.56.png)
 
-Figure 11: *CBdragon.dae with aperture 0.75, depth 4.56*
+Figure 10: *CBdragon.dae with aperture 0.75, depth 4.56*
 
-![CBdragon.dae with aperture 1](images/part4/CBdragon/aperture_change/CBdragon-b1-d4.56.png)
+![CBdragon.dae with aperture 1.5](images/part4/CBdragon/aperture_change/CBdragon-b1.5-d4.56.png)
 
-Figure 12: *CBdragon.dae with aperture 1, depth 4.56*
+Figure 11: *CBdragon.dae with aperture 1, depth 4.56*
+
+![CBdragon.dae with aperture 2](images/part4/CBdragon/aperture_change/CBdragon-b2-d4.56.png)
+
+Figure 12: *CBdragon.dae with aperture 0.5, depth 4.56*
 
 ## Focus stack with depth change, aperture at 1.23
 
