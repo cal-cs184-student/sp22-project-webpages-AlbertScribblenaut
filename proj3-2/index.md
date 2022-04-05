@@ -194,11 +194,11 @@ Figure 11: *CBdragon.dae with aperture 0.75, depth 4.56*
 
 The box's edges have completely blurred together in Figure 13.
 
-![CBdragon.dae with aperture 2](images/part4/CBdragon/aperture_change/CBdragon-b1-d4.56.png)
+![CBdragon.dae with aperture 2](images/part4/CBdragon/aperture_change/CBdragon-b2-d4.56.png)
 
 Figure 12: *CBdragon.dae with aperture 2, depth 4.56*
 
-The dragon's chest and mouth are the only well-defined features in Figure 12.
+The dragon's chest and mouth are no longer well-defined features in Figure 12.
 
 ## Focus stack with depth change, aperture at 1.23
 
