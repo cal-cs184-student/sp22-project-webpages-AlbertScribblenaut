@@ -165,7 +165,7 @@ Figure 8: *CBdragon.dae with aperture 1.23, depth 4.56*
 As shown in Figure 8, the rendered dragon appears to have only the chest and mouth in focus. The edges of the box are noticeably blurred, and there is appears to be an in-focus rectangular outline around the dragon. This image was made possible with the following algorithm:
 * Determine a ray `Ray redRay` from the image plane to the center of the thin lenses by translating from normalized image coordinates to camera coordinates
 * Find a point `Vector3D pFocus` that intersects between the plane of focus and the above ray
-* Uniformly sample a point on the thin lens with `Vector3D pLens = (lensRadius * sqrt(rndR) * cos(rndTheta), lensRadius * sqrt(rndR) * sin(rndTheta), 0)`, where `rndR` and `rndTheta` are random variables between $$[0, 1)$$ and $$[0, 2 \pi)$$ respectively.
+* Uniformly sample a point on the thin lens with `Vector3D pLens = (lensRadius * sqrt(rndR) * cos(rndTheta), lensRadius * sqrt(rndR) * sin(rndTheta), 0)`, where `rndR` and `rndTheta` are random variables `0 <= rndR < 1` and `0 <= rndTheta < 2 * PI`.
 * Determine the direction `Vector3D blueDir` of the ray from `pLens` to `pFocus`
 * Normalize `blueDir`
 * Perform a transform from camera space to world space for `blueDir` and `pLens` with the `Matrix 3x3 c2w` matrix
