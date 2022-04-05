@@ -109,9 +109,9 @@ Figure 10: *CBdragon.dae with aperture 0.25, depth 4.56*
 Figure 11: *CBdragon.dae with aperture 0.75, depth 4.56*
 
 
-![CBdragon.dae with aperture 1](images/part4/CBdragon/aperture_change/CBdragon-b1-d4.56.png)
+![CBdragon.dae with aperture 2](images/part4/CBdragon/aperture_change/CBdragon-b1-d4.56.png)
 
-Figure 12: *CBdragon.dae with aperture 1, depth 4.56*
+Figure 12: *CBdragon.dae with aperture 2, depth 4.56*
 
 ## Focus stack with depth change, aperture at 1.23
 
