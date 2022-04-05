@@ -5,7 +5,76 @@ CS184 Project 3-2: Pathtracer
 
 **Author:** *Albert Wen*
 
+This project is an extension of Project 3-1. The previous project developed fundamentals of ray tracing and illumination, while this one focused on material modeling, environment modeling, and camera lenses. I chose to complete Parts 1 and 4, which models glass and mirror materials and the depth of field of a thin-lens camera respectively. The staff library instead of my Project 3-1 code was used to complete this project.
+
 # Part 1
+
+For simplification, the object coordinate space was used to assist in bidrectional scattering distribution function (BSDF) calculations.
+
+Mirrors are assumed to have perfect specular reflections, therefore implementation was very straightforward. In the `BSDF::reflect()` function, which took in a `Ray wo` and `Ray* wi`, I reflected `wo` about a normal vector `Vector3D(0, 0, 1)` and assigned the reflected `Ray` to `*wi`.
+
+```
+void BSDF::reflect(const Vector3D wo, Vector3D* wi) {
+    *wi = dot(Vector3D(0,0,1), wo) * Vector3D(0, 0, 1) * 2 - wo;
+}
+```
+*Code snippet from `BSDF::reflect()` in `advanced_bsdf.cpp`*
+
+Rays that were refracted were redirected in accordance with Snell's Law. The term `eta` used the medium of interest's index of refraction and was dependent on whether the ray was entering or exiting into another medium. Total internal reflection was also accounted for within the loop.
+```
+bool BSDF::refract(const Vector3D wo, Vector3D* wi, double ior) {
+    double eta = ior;
+    if (wo.z > 0) {
+        // entering surface
+        eta = 1. / ior;
+        if ((1. - pow(eta, 2) * (1. - pow(cos_theta(wo), 2))) < 0) {
+            return false;
+        }
+    }
+    wi->x = -eta * wo.x;
+    wi->y = -eta * wo.y;
+    wi->z = sqrt(1 - pow(eta, 2) * (1. - pow(wo.z, 2)));
+    if (wo.z > 0) {
+        wi->z = -wi->z;
+    }
+	return true;
+}
+```
+*Code snippet from `BSDF::refract()` in `advanced_bsdf.cpp`*
+
+To fully encapsulate specular interactions with glass, I utilized both the code for reflections and Schlick's approximation to the Fresnel equations. Using `coin_flip` probability for the Schlick coefficient `R`, I was able to approximate the behavior of specular reflection and refraction inside the glass sphere of `CBspheres.dae`.
+
+```
+Vector3D GlassBSDF::sample_f(const Vector3D wo, Vector3D* wi, double* pdf) {
+    double eta = ior;
+    if (wo.z > 0) {
+        eta = 1. / ior;
+    }
+
+    if ((1. - pow(eta, 2) * (1. - pow(cos_theta(wo), 2))) < 0) {
+        reflect(wo, wi);
+        *pdf = 1;
+        return reflectance / abs_cos_theta(*wi);
+    }
+    else {
+        double n1 = 1;  // ior of air
+        double n2 = ior;
+        double R0 = pow((n1 - n2) / (n1 + n2), 2);
+        double R = R0 + (1 - R0) * pow(1 - abs_cos_theta(wo), 5);
+        if (coin_flip(R)) {
+            reflect(wo, wi);
+            *pdf = R;
+            return R * reflectance / abs_cos_theta(*wi);
+        }
+        else {
+            refract(wo, wi, ior);
+            *pdf = 1 - R;
+            return (1 - R) * transmittance / abs_cos_theta(*wi) / pow(eta, 2);
+        }
+    }
+}
+```
+*Code snippet from `GlassBSDF::sample_f()` in `advanced_bsdf.cpp`*
 
 ## Ray depth 0
 ![CBspheres.dae with ray depth 0](images/part1/CBspheres-m0.png)
@@ -93,25 +162,43 @@ A thin-lens camera model uses a thin lens to refract incoming rays from the imag
 
 Figure 8: *CBdragon.dae with aperture 1.23, depth 4.56*
 
+As shown in Figure 8, the rendered dragon appears to have only the chest and mouth in focus. The edges of the box are noticeably blurred, and there is appears to be an in-focus rectangular outline around the dragon. This image was made possible with the following algorithm:
+* Determine a ray `Ray redRay` from the image plane to the center of the thin lenses by translating from normalized image coordinates to camera coordinates
+* Find a point `Vector3D pFocus` that intersects between the plane of focus and the above ray
+* Uniformly sample a point on the thin lens with `Vector3D pLens = (lensRadius * sqrt(rndR) * cos(rndTheta), lensRadius * sqrt(rndR) * sin(rndTheta), 0)`, where `rndR` and `rndTheta` are random variables between $$[0, 1)$$ and $$[0, 2 \pi)$$ respectively.
+* Determine the direction `Vector3D blueDir` of the ray from `pLens` to `pFocus`
+* Normalize `blueDir`
+* Perform a transform from camera space to world space for `blueDir` and `pLens` with the `Matrix 3x3 c2w` matrix
+* adjust the position of `pLens` with `pos`, which denotes the lens' center within world space
+* construct the `Ray blueRay` object with the adjusted `pLens` as the origin and `blueDir` as the direction and set the near and far clips of the `Ray`
+* return `blueRay`
+
+
 ## Focus stack with aperture change, depth at 4.56
 
 ![CBdragon.dae with aperture 0.02](images/part4/CBdragon/aperture_change/CBdragon-b0.02-d4.56.png)
 
 Figure 9: *CBdragon.dae with aperture 0.02, depth 4.56*
 
+In Figure 9, the image appears to be mostly in focus, even with a nonzero lens radius.
+
 ![CBdragon.dae with aperture 0.25](images/part4/CBdragon/aperture_change/CBdragon-b0.25-d4.56.png)
 
 Figure 10: *CBdragon.dae with aperture 0.25, depth 4.56*
 
+In Figure 10, there is more blurring around the dragon's body and the box's edges appear less sharp than in Figure 9.
 
 ![CBdragon.dae with aperture 0.75](images/part4/CBdragon/aperture_change/CBdragon-b0.75-d4.56.png)
 
 Figure 11: *CBdragon.dae with aperture 0.75, depth 4.56*
 
+The box's edges have completely blurred together in Figure 13.
 
 ![CBdragon.dae with aperture 2](images/part4/CBdragon/aperture_change/CBdragon-b1-d4.56.png)
 
 Figure 12: *CBdragon.dae with aperture 2, depth 4.56*
+
+The dragon's chest and mouth are the only well-defined features in Figure 12.
 
 ## Focus stack with depth change, aperture at 1.23
 
@@ -119,19 +206,25 @@ Figure 12: *CBdragon.dae with aperture 2, depth 4.56*
 
 Figure 13: *CBdragon.dae with aperture 1.23, depth 1*
 
+There is no visible image of the dragon in Figure 13 because there aren't enough rays refracting to the point of focus on the plane of focus.
+
 ![CBdragon.dae with depth 2](images/part4/CBdragon/depth_change/CBdragon-b1.23-d2.png)
 
 Figure 14: *CBdragon.dae with aperture 1.23, depth 2*
+
+Figure 14 shows noticeable improvements in visibility, but no distinct colors. It looks like the depth is too low and results several refracted rays from reaching the point of focus.
 
 ![CBdragon.dae with depth 3.75](images/part4/CBdragon/depth_change/CBdragon-b1.23-d3.75.png)
 
 Figure 15: *CBdragon.dae with aperture 1.23, depth 3*
 
-![CBdragon.dae with depth 4](images/part4/CBdragon/depth_change/CBdragon-b1.23-d4.png)
+There are now visibly distinct colors in Figure 15, but no distinct features from the dragon.
 
-Figure 16: *CBdragon.dae with aperture 1.23, depth 4*
+![CBdragon.dae with depth 5](images/part4/CBdragon/depth_change/CBdragon-b1.23-d5.png)
 
+Figure 16: *CBdragon.dae with aperture 1.23, depth 5*
 
+Because the depth is greater than shown in previous figures, the midsection of the dragon is now visible in Figure 16. The chest and mouth of the dragon are no longer in focus.
 
 
 # Web Page
