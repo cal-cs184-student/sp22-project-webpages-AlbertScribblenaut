@@ -100,7 +100,7 @@ Figure 3 accurately shows reflection, especially as seen in the left sphere. The
 * First bounce: reflecting off the box space or the right sphere's surface
 * Second bounce: reflecting off the left sphere
 
-In the right sphere, there is some reflection exhibited, but it is not a purely reflective material. It refracts somewhat, but it absorbs almost all refracting rays because rays with at least depth 3 are required.
+In the right sphere, there is some reflection exhibited, but it is not a purely reflective material. It refracts somewhat, but it absorbs almost all refracting rays because rays with at least depth 3 are required. In other words, the glass sphere allows rays to enter the glass medium, but those that do cannot exit from glass to air.
 
 This image is also the first where the ceiling panel's color is now visible to the camera, but not visible in the left sphere's reflection of the environment.
 
