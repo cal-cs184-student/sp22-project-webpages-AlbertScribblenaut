@@ -26,11 +26,11 @@ Figure 3 displays `pin2.json` with all constraints. This includes diagonal, hori
 
 # Part 2: Simulation via numerical integration
 
-I was hoping to include changes based on extreme values of `ks` and variable `density` and `damping`. There may be issues with grid construction from the previous part because the colors in with the Normal shaders don't match up with mine. It's not possible to view any obvious changes because the simulation itself moves too slowly.
+I was hoping to include changes based on extreme values of `ks` and variable `density` and `damping`. There seems to be an issue with the spring length constraints applied to the cloth because it implodes and explodes durin the simulation.
 
-![pin4.json when calling Cloth::simulate()](images/part2/nothing_happening.png)
+![pin4.json when calling Cloth::simulate()](images/part2/its_alive_normal.png)
 
-Figure 4 is all I am able to produce for this part. I'm not sure if this is really the intended resting position.
+Figure 4 is all I am able to produce for this part.
 
 # Part 3: Handling collisions with other objects
 
